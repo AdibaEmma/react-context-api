@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react"
+import { v4 as uuidv4 } from 'uuid';
 import {MovieContext} from "../MovieContext"
 
 const AddMovie = () => {
@@ -17,13 +18,14 @@ const AddMovie = () => {
     const addMovie = e => {
         e.preventDefault();
 
-        setMovies(prevMovies => [...prevMovies, {name, price}])
-
+        const id = uuidv4()
+        setMovies(prevMovies => [...prevMovies, {name, price,id}])
         setName("")
         setPrice("")
         
     }
 
+    console.log(movies);
 
 
     return (
