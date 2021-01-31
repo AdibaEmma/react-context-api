@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from "react"
+import {MovieContext} from "../MovieContext"
 
 const AddMovie = () => {
     const [name, setName] = useState("")
     const [price, setPrice] = useState("")
+    const [movies, setMovies] = useContext(MovieContext)
 
     const updateName = e => {
         setName(e.target.value)
@@ -14,6 +16,11 @@ const AddMovie = () => {
 
     const addMovie = e => {
         e.preventDefault();
+
+        setMovies(prevMovies => [...prevMovies, {name, price}])
+
+        setName("")
+        setPrice("")
         
     }
 
@@ -22,7 +29,7 @@ const AddMovie = () => {
     return (
         <div className="form">
             <h1 className="form-heading">Add <span>Movie</span></h1>
-            <form action="">
+            <form onSubmit={addMovie}>
             <label htmlFor="name">name:</label>
            <input type="text" 
            name="name" value={name} 
