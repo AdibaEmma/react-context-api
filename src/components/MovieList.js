@@ -5,7 +5,7 @@ import {MovieContext} from "../MovieContext"
 const MovieList = () => {
     const [movies, setMovies] = useContext(MovieContext)
     return (
-        <div>
+        <div className="movies">
             {
                 movies.map(movie => (
                     <Movie name={movie.name} price={movie.price} key={movie.id}/>
